@@ -1,7 +1,7 @@
 Summary:	Pictures for use with the paint program Tuxpaint
 Name: 		tuxpaint-config
 Version:	0.0.12
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	GPL
 Source: 	%{name}-%{version}.tar.bz2
 
@@ -9,7 +9,7 @@ Group:		Graphics
 URL:		http://sourceforge.net/projects/tuxpaint
 BuildRoot: 	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Requires: 	tuxpaint
-BuildRequires:  libfltk-devel libpaper-devel
+BuildRequires:  fltk-devel libpaper-devel
 
 
 %description
