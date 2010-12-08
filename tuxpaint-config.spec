@@ -1,7 +1,7 @@
 Summary:	Pictures for use with the paint program Tuxpaint
 Name: 		tuxpaint-config
 Version:	0.0.12
-Release:	%mkrel 2
+Release:	%mkrel 3
 License:	GPL
 Source: 	%{name}-%{version}.tar.bz2
 
