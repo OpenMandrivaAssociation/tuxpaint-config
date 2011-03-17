@@ -9,7 +9,7 @@ Group:		Graphics
 URL:		http://sourceforge.net/projects/tuxpaint
 BuildRoot: 	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Requires: 	tuxpaint
-BuildRequires:  fltk-devel libpaper-devel libxext-devel
+BuildRequires:  desktop-file-utils fltk-devel libpaper-devel libxext-devel
 
 
 %description
