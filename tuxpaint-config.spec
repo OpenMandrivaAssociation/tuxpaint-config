@@ -1,7 +1,7 @@
 Summary:	Pictures for use with the paint program Tuxpaint
 Name: 		tuxpaint-config
 Version:	0.0.12
-Release:	%mkrel 3
+Release:	%mkrel 4
 License:	GPL
 Source: 	%{name}-%{version}.tar.bz2
 
@@ -9,18 +9,15 @@ Group:		Graphics
 URL:		http://sourceforge.net/projects/tuxpaint
 BuildRoot: 	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Requires: 	tuxpaint
-BuildRequires:  fltk-devel libpaper-devel
+BuildRequires:  fltk-devel libpaper-devel libxext-devel
 
 
 %description
-Tux Paint is a simple paint program gear towards young children. 
-It provides a simple but entertaining interface, allows drawing
-with brushes, lines, shapes, and 'stamps,' and has a 'magic' 
-tool, for special effects. Loading and saving is done via a 
-graphical interface, and the underlying environment's 
-filesystem isn't exposed (much like programs on PDAs).
-
-This packages contains a lot of extra pictures (stamps) for tuxpaint.
+Tux Paint Config is a graphical configuration tool for "Tux Paint."
+It provides a point-and-click interface that allows parents and teachers
+to alter Tux Paint's behavior -- disable sound effects, run in
+full-screen mode, etc. - without needing to manipulate a text-based
+configuration file.
 
 %prep
 %setup -q
@@ -42,6 +39,13 @@ chmod -R go+r docs/
 
 %find_lang %{name}
 
+mkdir -p %{buildroot}%{_datadir}/applications
+desktop-file-install	--vendor="" \
+			--dir $RPM_BUILD_ROOT%{_datadir}/applications \
+			--remove-category="Settings" \
+                        --add-category="Education" \
+			src/tuxpaint-config.desktop
+
 # fix perms
 chmod -R go=u-w $RPM_BUILD_ROOT/*
 
@@ -54,6 +58,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc docs/AUTHORS.txt docs/CHANGES.txt docs/COPYING.txt docs/README.txt docs/TODO.txt docs/html/README.html
 %_mandir/man1/%{name}.*
 %{_includedir}/X11/pixmaps/%{name}.*
+%{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/*
 %{_datadir}/%{name}/images/*
 %{_miconsdir}/*.png
