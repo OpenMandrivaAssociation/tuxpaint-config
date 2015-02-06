@@ -1,7 +1,7 @@
 Summary:	Pictures for use with the paint program Tuxpaint
 Name: 		tuxpaint-config
 Version:	0.0.12
-Release:	5
+Release:	6
 License:	GPL
 Group:		Graphics
 URL:		http://sourceforge.net/projects/tuxpaint
