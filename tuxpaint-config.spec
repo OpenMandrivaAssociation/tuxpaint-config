@@ -1,3 +1,4 @@
+%global optflags %{optflags} -Wno-error=format-security
 Summary:	Pictures for use with the paint program Tuxpaint
 Name: 		tuxpaint-config
 Version:	0.0.12
@@ -7,12 +8,15 @@ Group:		Graphics
 URL:		http://sourceforge.net/projects/tuxpaint
 Source:		%{name}-%{version}.tar.bz2
 Patch0:		tuxpaint-config-0.0.12-locale.patch
+Patch1:		tuxpaint-config-compile.patch
 BuildRequires:	desktop-file-utils
 BuildRequires:	fltk-devel
 BuildRequires:	libpaper-devel
 BuildRequires:	pkgconfig(xext)
 BuildRequires:	pkgconfig(cairo)
 BuildRequires:	pkgconfig(pixman-1)
+BuildRequires:	pkgconfig(xinerama)
+BuildRequires:	pkgconfig(xft)
 Requires:	tuxpaint
 
 %description
@@ -23,8 +27,7 @@ full-screen mode, etc. - without needing to manipulate a text-based
 configuration file.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 make OPTFLAGS="%{optflags}" PREFIX=%{_prefix} LIBDIR=%{_libdir}
@@ -56,6 +59,7 @@ chmod -R go=u-w %{buildroot}/*
 %defattr(755,root,root,755)
 %{_bindir}/%{name}
 %doc docs/AUTHORS.txt docs/CHANGES.txt docs/COPYING.txt docs/README.txt docs/TODO.txt docs/html/README.html
+%doc %{_docdir}/tuxpaint-config/html/README.html
 %{_mandir}/man1/%{name}.*
 %{_includedir}/X11/pixmaps/%{name}.*
 %{_datadir}/applications/%{name}.desktop
@@ -64,21 +68,3 @@ chmod -R go=u-w %{buildroot}/*
 %{_miconsdir}/*.png
 %{_iconsdir}/*.png
 %{_liconsdir}/*.png
-
-
-%changelog
-* Thu Mar 17 2011 Angelo Naselli <anaselli@mandriva.org> 0.0.12-4mdv2011.0
-+ Revision: 646254
-- Added missing icon
-
-* Wed Dec 08 2010 Oden Eriksson <oeriksson@mandriva.com> 0.0.12-3mdv2011.0
-+ Revision: 615277
-- the mass rebuild of 2010.1 packages
-
-* Tue Jan 12 2010 Angelo Naselli <anaselli@mandriva.org> 0.0.12-2mdv2010.1
-+ Revision: 490252
-- fixed requirements for X86_64
-- fixed url
-- import tuxpaint-config
-
-

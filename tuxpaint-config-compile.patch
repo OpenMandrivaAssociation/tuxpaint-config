@@ -1,0 +1,12 @@
+diff -up tuxpaint-config-0.0.12/src/tuxpaint-config2.cxx.omv~ tuxpaint-config-0.0.12/src/tuxpaint-config2.cxx
+--- tuxpaint-config-0.0.12/src/tuxpaint-config2.cxx.omv~	2020-06-12 16:46:19.384196702 +0200
++++ tuxpaint-config-0.0.12/src/tuxpaint-config2.cxx	2020-06-12 16:46:45.263477242 +0200
+@@ -1381,7 +1381,7 @@ static void cb_CHOICE_settings(Fl_Choice
+     }    
+     
+     snprintf(question, sizeof(question), gettext("Apply changes you made to %s?"), user);
+-    if (fl_choice(gettext(question),
++    if (fl_choice("%s", gettext(question),
+                   gettext("No"), gettext("Yes"), NULL))
+     {
+       apply_settings();
