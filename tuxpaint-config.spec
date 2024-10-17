@@ -5,7 +5,7 @@ Version:	0.0.12
 Release:	7
 License:	GPL
 Group:		Graphics
-URL:		http://sourceforge.net/projects/tuxpaint
+URL:		https://sourceforge.net/projects/tuxpaint
 Source:		%{name}-%{version}.tar.bz2
 Patch0:		tuxpaint-config-0.0.12-locale.patch
 Patch1:		tuxpaint-config-compile.patch
